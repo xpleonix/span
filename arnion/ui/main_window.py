@@ -1,4 +1,6 @@
 import tkinter as tk
+from arnion.db.mysql_connection import ConnectionHandler
+
 
 class MainWindow:
 
@@ -40,11 +42,20 @@ class MainWindow:
                               font=('Helvetica', 10, 'bold'), bg="#ccffcc")
         btn_close.place(x=160, y=200, width=120, height=50)
 
+        # "Test" button
+        btn_test = tk.Button(self.window, text="Test",
+                              font=('Helvetica', 10, 'bold'), bg="#ffffcc", command=self.do_test)
+        btn_test.place(x=25, y=300, width=120, height=50)
+
         #add close window button
         btn_close = tk.Button(self.window, text="Exit",
                               font=('Helvetica', 10, 'bold'), bg="#ccffcc", command=self.close)
         btn_close.place(x=160, y=300, width=120, height=50)
 
+    #function Test
+    def do_test(self):
+        ch = ConnectionHandler()
+        ch.do_test()
 
     #close main window function
     def close(self):
