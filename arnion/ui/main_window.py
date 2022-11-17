@@ -1,8 +1,10 @@
 import tkinter as tk
 
 from arnion.data.departments_data import DepartmentDataHandler
-from arnion.data.emplyees_data import EmployeeDataHandler
+from arnion.data.employees_data import EmployeeDataHandler
 from arnion.db.mysql_connection import ConnectionHandler
+from arnion.ui.departments_reports_ui import DepartmentsReportWindow
+from arnion.ui.employees_report_ui import EmployeesReportWindow
 
 
 class MainWindow:
@@ -37,12 +39,12 @@ class MainWindow:
 
         # button for Reports Departments
         btn_report = tk.Button(self.window, text="Departments",
-                               font=('Helvetica', 10, 'bold'), bg="#ccffcc")
+                               font=('Helvetica', 10, 'bold'), bg="#ccffcc", command=self.do_report_departments)
         btn_report.place(x=25, y=200, width=120, height=50)
 
         # button for Reports Employees
         btn_close = tk.Button(self.window, text="Employees",
-                              font=('Helvetica', 10, 'bold'), bg="#ccffcc")
+                              font=('Helvetica', 10, 'bold'), bg="#ccffcc", command=self.do_report_employees)
         btn_close.place(x=160, y=200, width=120, height=50)
 
         # "Test" button
@@ -60,6 +62,16 @@ class MainWindow:
         employees = EmployeeDataHandler.select_list()
         for employee in employees:
             print(employee.get_full_name())
+
+    # open report Departments
+    def do_report_departments(self):
+        rpt = DepartmentsReportWindow()
+        rpt.open
+
+    # open report Employees
+    def do_report_employees(self):
+        rpt = EmployeesReportWindow()
+        rpt.open
 
     #close main window function
     def close(self):
