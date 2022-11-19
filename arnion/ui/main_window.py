@@ -1,7 +1,7 @@
 import tkinter as tk
 
-from arnion.data.departments_data import DepartmentDataHandler
-from arnion.data.employees_data import EmployeeDataHandler
+from arnion.data.departments_data import DepartmentDataHandler, DepartmentDataObject
+from arnion.data.employees_data import EmployeeDataHandler, EmployeeDataObject
 from arnion.db.mysql_connection import ConnectionHandler
 from arnion.ui.departments_reports_ui import DepartmentsReportWindow
 from arnion.ui.employees_report_ui import EmployeesReportWindow
@@ -58,10 +58,41 @@ class MainWindow:
         btn_close.place(x=160, y=300, width=120, height=50)
 
     #function Test
+
     def do_test(self):
-        employees = EmployeeDataHandler.select_list()
-        for employee in employees:
-            print(employee.get_full_name())
+        # replace employee
+        #employee = EmployeeDataHandler.select_by_id(7)
+        #print(employee.get_full_name(), employee.department_id)
+        #employee.first_name = "Дмитрий"
+        #employee.middle_name = "Олегович"
+        #employee.last_name = "Кириллов"
+        #employee.department_id = "1"
+        #print(employee.get_full_name(), employee.department_id)
+        #EmployeeDataHandler.update(employee)
+        #print("Done!")
+
+        # add new employee
+        employee = EmployeeDataObject(first_name="Василий", middle_name="Леонидович",
+                                      last_name="Вадимов", department_id=2)
+        print(employee.employee_id)
+        EmployeeDataHandler.insert(employee)
+        print(employee.employee_id)
+        print("Done!")
+
+# add new department
+        #department = DepartmentDataObject(department_name="Отдел тестирования")
+        #print(department.department_id)
+        #DepartmentDataHandler.insert(department)
+        #print(department.department_id)
+        #print("Done!")
+              
+# rename department
+        #department = DepartmentDataHandler.select_by_id(3)
+        #print(department.department_name)
+        #department.department_name = "Отдел работы с клиентами"
+        #print(department.department_name)
+        #DepartmentDataHandler.update(department)
+        #print("Done!")
 
     # open report Departments
     def do_report_departments(self):

@@ -26,7 +26,7 @@ class DepartmentDataHandler:
     def select_by_id(department_id: int):
         try:
             with my_connection_handler.get_connection() as cnn:
-                select_query = "SELECT * FROM departments WHERE department_id" + str(department_id)
+                select_query = "SELECT * FROM departments WHERE department_id=" + str(department_id)
                 with cnn.cursor() as cursor:
                     cursor.execute(select_query)
                     row = cursor.fetchone()
@@ -38,3 +38,39 @@ class DepartmentDataHandler:
     @staticmethod
     def get_department(row):
         return DepartmentDataObject(row[0], row[1])
+
+    @staticmethod
+    def insert(department: DepartmentDataObject):
+        try:
+            with my_connection_handler.get_connection() as cnn:
+                insert_query = "INSERT INTO departments (department_name) VALUES ('" \
+                               + department.department_name + "')"
+                with cnn.cursor() as cursor:
+                    cursor.execute(insert_query)
+                    department.department_id = cursor.lastrowid
+        except:
+            raise
+
+
+    @staticmethod
+    def update(department: DepartmentDataObject):
+        try:
+            with my_connection_handler.get_connection() as cnn:
+                insert_query = "UPDATE departments SET department_name='" \
+                               + department.department_name + "' " \
+                               + "WHERE department_id=" + str(department.department_id)
+                with cnn.cursor() as cursor:
+                    cursor.execute(insert_query)
+        except:
+            raise
+
+    @staticmethod
+    def delete_by_id(department_id: int):
+        try:
+            with my_connection_handler.get_connection() as cnn:
+                insert_query = "DELETE FROM departments WHERE department_id=" + str(department_id)
+                with cnn.cursor() as cursor:
+                    cursor.execute(insert_query)
+        except:
+            raise
+
