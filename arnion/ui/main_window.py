@@ -3,7 +3,9 @@ import tkinter as tk
 from arnion.data.departments_data import DepartmentDataHandler, DepartmentDataObject
 from arnion.data.employees_data import EmployeeDataHandler, EmployeeDataObject
 from arnion.db.mysql_connection import ConnectionHandler
+from arnion.ui.departments_data_ui import DepartmentsWindow
 from arnion.ui.departments_reports_ui import DepartmentsReportWindow
+from arnion.ui.employees_data_ui import EmployeesWindow
 from arnion.ui.employees_report_ui import EmployeesReportWindow
 
 
@@ -24,14 +26,14 @@ class MainWindow:
         lblTitle1.place(x=25, y=55, width=250, height=50)
 
         #button for Data Departments
-        btn_report = tk.Button(self.window, text="Departments",
-                              font=('Helvetica', 10, 'bold'), bg="#ccffcc")
-        btn_report.place(x=25, y=100, width=120, height=50)
+        btn_list_departments = tk.Button(self.window, text="Departments",
+                              font=('Helvetica', 10, 'bold'), bg="#ccffcc", command=self.do_list_departments)
+        btn_list_departments.place(x=25, y=100, width=120, height=50)
 
         # button for Data Employees
-        btn_close = tk.Button(self.window, text="Employees",
-                              font=('Helvetica', 10, 'bold'), bg="#ccffcc")
-        btn_close.place(x=160, y=100, width=120, height=50)
+        btn_list_emloyees = tk.Button(self.window, text="Employees",
+                              font=('Helvetica', 10, 'bold'), bg="#ccffcc", command=self.do_list_employees)
+        btn_list_emloyees.place(x=160, y=100, width=120, height=50)
 
         # header for Reports
         lblTitle1 = tk.Label(text="Reports", font=('Helvetica', 12, 'bold'), fg='#0066ff', justify='center')
@@ -79,20 +81,30 @@ class MainWindow:
         print(employee.employee_id)
         print("Done!")
 
-# add new department
+        # add new department
         #department = DepartmentDataObject(department_name="Отдел тестирования")
         #print(department.department_id)
         #DepartmentDataHandler.insert(department)
         #print(department.department_id)
         #print("Done!")
               
-# rename department
+        # rename department
         #department = DepartmentDataHandler.select_by_id(3)
         #print(department.department_name)
         #department.department_name = "Отдел работы с клиентами"
         #print(department.department_name)
         #DepartmentDataHandler.update(department)
         #print("Done!")
+
+    # open list Departments
+    def do_list_departments(self):
+        rpt = DepartmentsWindow()
+        rpt.open
+
+    # open list Employees
+    def do_list_employees(self):
+        rpt = EmployeesWindow()
+        rpt.open
 
     # open report Departments
     def do_report_departments(self):
