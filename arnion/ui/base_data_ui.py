@@ -36,3 +36,25 @@ class ListWindow:
 
     def close(self):
         pass
+
+class RecordWindow:
+
+    # constructor
+    def __init__(self):
+        pass
+
+    # open window
+    def open(self):
+        pass
+
+    # save record and close window
+    def save(self):
+        pass
+
+    # close window without saving a record ("cancel" button)
+    def close(self):
+        pass
+
+    # collect info from the input fields
+    def collect_from_controls(self):
+        pass
