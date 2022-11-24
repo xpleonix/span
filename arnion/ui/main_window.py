@@ -49,10 +49,10 @@ class MainWindow:
                               font=('Helvetica', 10, 'bold'), bg="#ccffcc", command=self.do_report_employees)
         btn_close.place(x=160, y=200, width=120, height=50)
 
-        # "Test" button
-        btn_test = tk.Button(self.window, text="Test",
-                              font=('Helvetica', 10, 'bold'), bg="#ffffcc", command=self.do_test)
-        btn_test.place(x=25, y=300, width=120, height=50)
+        # # "Test" button
+        # btn_test = tk.Button(self.window, text="Test",
+        #                       font=('Helvetica', 10, 'bold'), bg="#ffffcc", command=self.do_test)
+        # btn_test.place(x=25, y=300, width=120, height=50)
 
         #add close window button
         btn_close = tk.Button(self.window, text="Exit",
@@ -61,7 +61,7 @@ class MainWindow:
 
     #function Test
 
-    def do_test(self):
+    #def do_test(self):
         # replace employee
         #employee = EmployeeDataHandler.select_by_id(7)
         #print(employee.get_full_name(), employee.department_id)
@@ -73,13 +73,13 @@ class MainWindow:
         #EmployeeDataHandler.update(employee)
         #print("Done!")
 
-        # add new employee
-        employee = EmployeeDataObject(first_name="Василий", middle_name="Леонидович",
-                                      last_name="Вадимов", department_id=2)
-        print(employee.employee_id)
-        EmployeeDataHandler.insert(employee)
-        print(employee.employee_id)
-        print("Done!")
+        # # add new employee
+        # employee = EmployeeDataObject(first_name="Василий", middle_name="Леонидович",
+        #                               last_name="Вадимов", department_id=2)
+        # print(employee.employee_id)
+        # EmployeeDataHandler.insert(employee)
+        # print(employee.employee_id)
+        # print("Done!")
 
         # add new department
         #department = DepartmentDataObject(department_name="Отдел тестирования")
